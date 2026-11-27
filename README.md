@@ -26,6 +26,7 @@ An automated workflow built in **n8n** (`My workflow 2`) to practice node config
    - Runs after the row is added to Google Sheets.
    - Sends an email message/notification via Gmail using details from the workflow.
 
+<img width="993" height="302" alt="Screenshot 2026-11-27 122632" src="https://github.com/user-attachments/assets/63b3a94f-aa55-47a8-9897-a43c5aab3c41" />
 
 
 
