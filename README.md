@@ -25,3 +25,7 @@ An automated workflow built in **n8n** (`My workflow 2`) to practice node config
 3. **Send Notification via Gmail (`Send a message` — `send: message`)**
    - Runs after the row is added to Google Sheets.
    - Sends an email message/notification via Gmail using details from the workflow.
+
+
+
+
