@@ -1,0 +1,226 @@
+{
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "#AUTOMATION 1\n\n###FIRST AUTOMATION TO UNDERSTAND THE WORKING OF NODES AND INSIDE SETTINGS OR CONFIGURATION",
+        "height": 112
+      },
+      "id": "4b5613fb-a5a3-445a-b65f-911d9a53f474",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        112,
+        -16
+      ]
+    },
+    {
+      "parameters": {
+        "formTitle": "SUBMISTION FORM",
+        "formDescription": "ITS FORM FILL ONLY INSTREATED TO BUILD KNOWLEDGE",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "NAME"
+            },
+            {
+              "fieldLabel": "EMAIL",
+              "fieldType": "email"
+            },
+            {
+              "fieldLabel": "COURSES",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "GENRATIV AI"
+                  },
+                  {
+                    "option": "DATA SCIENCE"
+                  },
+                  {
+                    "option": "ARTIFICAL INTEGILLENC"
+                  },
+                  {
+                    "option": "PYTHON PROGRAMMING"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "options": {
+          "buttonLabel": "Submit"
+        }
+      },
+      "id": "a236b700-9fdd-4f4c-80cb-0fe9c093f2c3",
+      "name": "On form submission",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        -160,
+        192
+      ],
+      "webhookId": "f75008ea-3af5-4228-9ca0-baf1d998022d",
+      "notesInFlow": true,
+      "notes": "MY FIRST FORM"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "19asUc-20R6aj6--vSz7o7oU5gQkB-l6_q1Up3_94nXM",
+          "mode": "list",
+          "cachedResultName": "Untitled spreadsheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19asUc-20R6aj6--vSz7o7oU5gQkB-l6_q1Up3_94nXM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19asUc-20R6aj6--vSz7o7oU5gQkB-l6_q1Up3_94nXM/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "NAME": "={{ $json.NAME }}",
+            "EMAIL": "={{ $json.EMAIL }}",
+            "COURSES": "={{ $json.COURSES }}",
+            "SUBMITTED AT": "={{ $json.submittedAt }}",
+            "FROM MODE": "={{ $json.formMode }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "NAME",
+              "displayName": "NAME",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "EMAIL",
+              "displayName": "EMAIL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "COURSES",
+              "displayName": "COURSES",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "SUBMITTED AT",
+              "displayName": "SUBMITTED AT",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "FROM MODE",
+              "displayName": "FROM MODE",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        64,
+        208
+      ],
+      "id": "ea09c0ea-57a0-4758-ae19-5f81251a8a4a",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "YPgnanfL3p34si44",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "yogiraj24116@gmail.com",
+        "subject": "FORM LEAD UPDATE",
+        "emailType": "text",
+        "message": "=HEY YOGIRAJ,\nHOW ARE YOU ?\nTHERE IS A NEW LEAD ON THE FORM.\nNAME: {{ $json.EMAIL }}\nEMAIL:{{ $json.NAME }}\nCOURSES:{{ $json.COURSES }}\nFORM MODE:{{ $json['FROM MODE'] }}\nSUBMITTED AT:{{ $json['SUBMITTED AT'] }}\nSOURSE:{{ $workflow.id }}\nTHANKS ,\nYOUR AWESOME WORKFLOW",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        288,
+        208
+      ],
+      "id": "b3eeb6a1-c81a-4ede-84bf-191f6564e0c5",
+      "name": "Send a message",
+      "webhookId": "d7245446-5dfe-4ac6-b54d-962dfb963195",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "phMFyNuBgmTvLfqr",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "5e0326f5-dd77-4940-83fa-0865299fd912",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "950b578e3caf2698083a51c408a2e76a6be756e301a76959de09279a8985537a"
+  },
+  "nodeGroups": [],
+  "id": "3onO6dETdKm5nzUZ",
+  "tags": []
+}
